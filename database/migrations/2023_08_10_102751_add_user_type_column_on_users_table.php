@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) 
         {
             if (! Schema::hasColumn('users', 'user_type')) {
-                $table->timestamp('user_type')->nullable()->after('password');
+                $table->string('user_type')->nullable()->after('password');
             }
 
             if (! Schema::hasColumn('users', 'surname')) {
-                $table->timestamp('surname')->nullable()->after('surname');
+                $table->string('surname')->nullable()->after('name');
             }
 
         });
