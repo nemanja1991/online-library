@@ -77,6 +77,8 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        dd('aaaa');
     }
+
+    
 }

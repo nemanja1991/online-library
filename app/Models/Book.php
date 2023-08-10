@@ -18,6 +18,8 @@ class Book extends Model
         'user_type'
     ];
 
+    protected $dates = ['deleted_at'];
+
     public function author()
     {
         return $this->belongsTo(Author::class);

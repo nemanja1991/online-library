@@ -29,6 +29,6 @@ class BookRepository implements BookInterface
 
     public function destroy($id)
     {
-
+        $data = Book::find($id)->delete();
     }
 }

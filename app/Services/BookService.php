@@ -23,4 +23,8 @@ class BookService
         return $this->bookRepository->store($data);
     }
 
+    public function destroy($id)
+    {
+        return $this->bookRepository->destroy($id);
+    }
 }
