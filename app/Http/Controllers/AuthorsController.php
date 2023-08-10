@@ -3,17 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Authors;
+use App\Services\AuthorService;
 use App\Http\Requests\StoreAuthorsRequest;
 use App\Http\Requests\UpdateAuthorsRequest;
 
 class AuthorsController extends Controller
 {
+    private $authorService;
+
+    public function __construct(AuthorService $authorService)
+    {
+        $this->authorService = $authorService;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $authors =  $this->authorService->all();
+
+        return view('authors.index', compact('authors'));
     }
 
     /**
