@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Services\BookService;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
+use Illuminate\Support\Facades\Validator;
 
 class BookController extends Controller
 {
-
     private $bookService;
 
     public function __construct(BookService $bookService)
@@ -24,7 +25,7 @@ class BookController extends Controller
     {
         $books =  $this->bookService->all();
 
-        return view('library.books', compact('books'));
+        return view('books.index', compact('books'));
     }
 
     /**
@@ -32,7 +33,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('books.create');
     }
 
     /**
@@ -40,7 +41,11 @@ class BookController extends Controller
      */
     public function store(StoreBookRequest $request)
     {
-        //
+        $validated = $request->validated();
+       
+        $this->bookService->store($validated);
+
+        return redirect('/books');
     }
 
     /**

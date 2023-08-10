@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreBookRequest extends FormRequest
@@ -11,7 +12,7 @@ class StoreBookRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,11 @@ class StoreBookRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title'         => ['required', 'string'],
+            'description'   => ['nullable', 'string', 'max:255'],
+            'book_number'   => ['required', 'numeric'],
+            'author_id'     => ['required'],
         ];
     }
 }
+//, Rule::unique(Book::class)

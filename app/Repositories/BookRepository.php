@@ -14,7 +14,7 @@ class BookRepository implements BookInterface
 
     public function store($data)
     {
-        
+        return Book::create($data);
     }
 
     public function find($id)
