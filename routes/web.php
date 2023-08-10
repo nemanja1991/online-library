@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
@@ -19,15 +20,13 @@ Route::get('/', function () {
     return view('books');
 });
 
-Route::get('/books', function () {
-    return view('books');
-})->middleware(['auth', 'verified'])->name('books');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/books', [BookController::class, 'index'])->name('books');
 
 Route::get('create_user', [RegisteredUserController::class, 'create'])->name('create_user');
 Route::post('create_user', [RegisteredUserController::class, 'store']);

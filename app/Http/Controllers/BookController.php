@@ -3,17 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Services\BookService;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
 
 class BookController extends Controller
 {
+
+    private $bookService;
+
+    public function __construct(BookService $bookService)
+    {
+        $this->bookService = $bookService;
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $books =  $this->bookService->all();
+
+        return view('books', compact('books'));
     }
 
     /**
