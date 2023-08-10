@@ -6,7 +6,7 @@ use App\Models\Book;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Authors extends Model
+class Author extends Model
 {
     use HasFactory;
 
@@ -16,7 +16,7 @@ class Authors extends Model
         'image',
     ];
 
-    public function books()
+    public function book()
     {
         return $this->hasMany(Book::class);
     }

@@ -24,7 +24,7 @@ class BookController extends Controller
     {
         $books =  $this->bookService->all();
 
-        return view('books', compact('books'));
+        return view('library.books', compact('books'));
     }
 
     /**

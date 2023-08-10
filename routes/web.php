@@ -16,16 +16,13 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 |
 */
 
-Route::get('/', function () {
-    return view('books');
-});
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/', [BookController::class, 'index'])->name('books');
 Route::get('/books', [BookController::class, 'index'])->name('books');
 
 Route::get('create_user', [RegisteredUserController::class, 'create'])->name('create_user');
