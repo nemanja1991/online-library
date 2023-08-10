@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('book_number')->unique();
             $table->foreignId('author_id')->constrained();
             $table->timestamps();
-            $table->timestamp('deleted_at');
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 

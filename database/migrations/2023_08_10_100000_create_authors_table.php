@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('surname');
             $table->string('image');
             $table->timestamps();
-            $table->timestamp('deleted_at');
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
