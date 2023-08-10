@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Repositories\BookRepository;
 
-class PostService
+class BookService
 {
     protected $bookRepository;
 
