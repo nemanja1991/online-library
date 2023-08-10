@@ -9,7 +9,7 @@ class BookRepository implements BookInterface
 {
     public function all()
     {
-        return Book::latest()->paginate(10);
+        return Book::with('author')->whereNull('deleted_at')->paginate(10);
     }
 
     public function store($data)

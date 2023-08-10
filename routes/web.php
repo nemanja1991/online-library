@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/book/edit/{$book}',        [BookController::class,     'edit'])->name('book.edit');
     Route::post('/book/store',              [BookController::class,     'store'])->name('book.store');
 
+    Route::get('/users',        [RegisteredUserController::class, 'create'])->name('users');
     Route::get('create_user',   [RegisteredUserController::class, 'create'])->name('create_user');
     Route::post('create_user',  [RegisteredUserController::class, 'store']);
 

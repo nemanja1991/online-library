@@ -20,10 +20,16 @@
                     <td class="px-6 py-3">{{ $book->book_number }}</td>
                     <td class="px-6 py-3">{{ $book->author->name }}</td>
                     <td class="px-6 py-3">
-                        <a href="{{ route('book.edit', $book->id) }}">click</a>
+                        <x-nav-link :href="route('book.edit', $book->id)">
+                            {{ __('click') }}
+                        </x-nav-link>
                     </td>
                     <td class="px-6 py-3">
-                        <a href="{{ route('book.destroy', $book->id) }}">click</a>
+
+                        <x-nav-link :href="route('book.destroy', $book->id)">
+                            {{ __('click') }}
+                        </x-nav-link>
+
                     </td>
                 </tr>
             @endforeach
