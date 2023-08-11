@@ -27,6 +27,8 @@
                 </header>
             @endif
 
+            @include('layouts.flash-messages')
+            
             <!-- Page Content -->
             <main>
                 {{ $slot }}

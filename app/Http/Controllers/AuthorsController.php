@@ -9,12 +9,8 @@ use App\Http\Requests\UpdateAuthorsRequest;
 
 class AuthorsController extends Controller
 {
-    private $authorService;
-
-    public function __construct(AuthorService $authorService)
-    {
-        $this->authorService = $authorService;
-    }
+    public function __construct(protected AuthorService $authorService)
+    {}
 
     /**
      * Display a listing of the resource.
@@ -43,7 +39,7 @@ class AuthorsController extends Controller
        
         $this->authorService->store($validated);
 
-        return redirect('authors');
+        return redirect('authors')->with('success', __('Author successuly added.'));
     }
 
     /**
@@ -71,7 +67,7 @@ class AuthorsController extends Controller
 
         $this->authorService->update($validated, $request->id);
 
-        return redirect('authors');
+        return redirect('authors')->with('success', __('Author successuly updated.'));
     }
 
     /**
@@ -81,6 +77,6 @@ class AuthorsController extends Controller
     {
         $this->authorService->destroy($author->id);
         
-        return redirect('authors');
+        return redirect('authors')->with('success', __('Author successuly removed.'));
     }
 }

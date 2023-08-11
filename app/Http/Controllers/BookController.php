@@ -13,14 +13,8 @@ use Illuminate\Support\Facades\Validator;
 
 class BookController extends Controller
 {
-    private $bookService;
-    private $authorService;
-
-    public function __construct(BookService $bookService, AuthorService $authorService)
-    {
-        $this->bookService = $bookService;
-        $this->authorService = $authorService;
-    }
+    public function __construct(protected BookService $bookService, protected AuthorService $authorService)
+    {}
 
     /**
      * Display a listing of the resource.
@@ -53,7 +47,7 @@ class BookController extends Controller
        
         $this->bookService->store($validated);
 
-        return redirect('/books');
+        return redirect()->route('books')->with('success', __('Book successuly added.'));
     }
 
     /**
@@ -84,7 +78,7 @@ class BookController extends Controller
 
         $this->bookService->update($validated, $request->id);
 
-        return redirect('/books');
+        return redirect('/books')->with('success', __('Book successuly updated.'));
     }
 
     /**
@@ -94,7 +88,7 @@ class BookController extends Controller
     {
         $this->bookService->destroy($id);
         
-        return redirect('/');
+        return redirect('/')->with('success', __('Author successuly removed.'));;
     }
 
     

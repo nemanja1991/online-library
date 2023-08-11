@@ -68,7 +68,7 @@ class RegisteredUserController extends Controller
 
         return view('auth.index',
             ['users' => User::all()]
-        );
+        )->with('success', __('User successuly removed.'));
     }
 
     public function edit($id)
@@ -98,6 +98,6 @@ class RegisteredUserController extends Controller
             ]
         );
         
-        return view('auth.index', ['users' => User::all()]);
+        return view('auth.index', ['users' => User::all()])->with('success', __('User successuly updated.'));
     }
 }
