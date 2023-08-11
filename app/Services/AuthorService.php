@@ -27,4 +27,14 @@ class AuthorService
     {
         return $this->authorRepository->destroy($id);
     }
+
+    public function find($id)
+    {
+        return $this->authorRepository->find($id);
+    }
+
+    public function update($data, $id)
+    {
+        return $this->authorRepository->update($data, $id);
+    }
 }

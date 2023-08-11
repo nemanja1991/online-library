@@ -49,7 +49,7 @@ class AuthorsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Authors $authors)
+    public function show(Author $author)
     {
         //
     }
@@ -57,17 +57,21 @@ class AuthorsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Authors $authors)
+    public function edit(Author $author)
     {
-        //
+        return view('authors.edit', ['author' => $this->authorService->find($author->id)]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateAuthorsRequest $request, Authors $authors)
+    public function update(UpdateAuthorsRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $this->authorService->update($validated, $request->id);
+
+        return redirect('authors');
     }
 
     /**

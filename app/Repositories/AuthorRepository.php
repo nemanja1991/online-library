@@ -15,7 +15,6 @@ class AuthorRepository implements AuthorInterface
 
     public function store($data)
     {
-
         return Author::create(
             [
                 'name'              => $data['name'],
@@ -27,12 +26,12 @@ class AuthorRepository implements AuthorInterface
 
     public function find($id)
     {
-        
+        return Author::find($id);
     }
 
     public function update($data, $id)
     {
-
+        return Author::where('id', $id)->update($data);
     }
 
     public function destroy($id)
