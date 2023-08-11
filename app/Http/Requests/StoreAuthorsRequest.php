@@ -22,8 +22,9 @@ class StoreAuthorsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'         => ['required', 'string'],
+            'name'      => ['required', 'string'],
             'surname'   => ['required', 'string'],
+            'image'     => ['nullable']
         ];
     }
 }

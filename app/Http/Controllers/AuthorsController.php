@@ -39,6 +39,10 @@ class AuthorsController extends Controller
        
         $this->authorService->store($validated);
 
+        $file = time().'.'.$request->image->extension();  
+       
+        $request->image->move(public_path('uploads'), $file);
+
         return redirect('authors')->with('success', __('Author successuly added.'));
     }
 

@@ -23,13 +23,13 @@
                             <x-input-error :messages="$errors->get('surname')" class="mt-2" />
                         </div>
 
-                        {{-- <div>
+                        <div>
                             <x-input-label for="image" :value="__('Image')" />
 
-                                <input type='file' name='image' class="form-control">
+                                <input type='file' name='image' class="block mt-1 w-full">
 
                             <x-input-error :messages="$errors->get('image')" class="mt-2" />
-                        </div> --}}
+                        </div>
 
                         <div class="flex items-center justify-end mt-4">
                             <x-primary-button class="ml-4">
