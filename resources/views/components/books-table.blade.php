@@ -21,7 +21,7 @@
                     <td class="px-6 py-3">{{ $book->title }}</td>
                     <td class="px-6 py-3">{{ $book->description }}</td>
                     <td class="px-6 py-3">{{ $book->book_number }}</td>
-                    <td class="px-6 py-3">{{ $book->author->name }}</td>
+                    <td class="px-6 py-3">{{ $book->author->getFullNameAttribute() }}</td>
                     <td class="px-6 py-3">
 
                         <x-nav-link :href="route('book.edit', $book->id)">

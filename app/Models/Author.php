@@ -23,4 +23,9 @@ class Author extends Model
     {
         return $this->hasMany(Book::class);
     }
+
+    public function getFullNameAttribute()
+    {
+       return ucfirst($this->name) . ' ' . ucfirst($this->surname);
+    }
 }

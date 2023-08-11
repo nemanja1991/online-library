@@ -27,4 +27,14 @@ class BookService
     {
         return $this->bookRepository->destroy($id);
     }
+
+    public function find($id)
+    {
+        return $this->bookRepository->find($id);
+    }
+
+    public function update($data, $id)
+    {
+        return $this->bookRepository->update($data, $id);
+    }
 }

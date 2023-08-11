@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Author;
 use App\Services\BookService;
+use App\Services\AuthorService;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreBookRequest;
 use App\Http\Requests\UpdateBookRequest;
@@ -12,10 +14,12 @@ use Illuminate\Support\Facades\Validator;
 class BookController extends Controller
 {
     private $bookService;
+    private $authorService;
 
-    public function __construct(BookService $bookService)
+    public function __construct(BookService $bookService, AuthorService $authorService)
     {
         $this->bookService = $bookService;
+        $this->authorService = $authorService;
     }
 
     /**
@@ -33,7 +37,10 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('books.create');
+        return view('books.create_edit', [
+            'book'      => null,
+            'authors'   => $this->authorService->all() 
+        ]);
     }
 
     /**
@@ -53,7 +60,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+
     }
 
     /**
@@ -61,21 +68,30 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('books.create_edit', [
+            'book'      => $this->bookService->find($book), 
+            'authors'   => $this->authorService->all() 
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBookRequest $request, Book $book)
+    public function update(UpdateBookRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        dd($validated);
+
+        $this->bookService->update($validated, $book);
+
+        return redirect('/books');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id)
+    public function destroy(Book $id)
     {
         $this->bookService->destroy($id);
         

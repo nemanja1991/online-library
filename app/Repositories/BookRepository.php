@@ -19,16 +19,16 @@ class BookRepository implements BookInterface
 
     public function find($id)
     {
-        
+        return Book::find($id);
     }
 
     public function update($data, $id)
     {
-
+        return Book::where('id', $id)->update($data);
     }
 
     public function destroy($id)
     {
-        $data = Book::find($id)->delete();
+        return $data = Book::find($id)->delete();
     }
 }

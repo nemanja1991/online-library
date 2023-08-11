@@ -14,6 +14,7 @@
                         {{ __('Add new Book') }}
                     </x-nav-link>
                     <hr><br>
+                    
                     <x-books-table :books="$books" />
                 </div>
             </div>
