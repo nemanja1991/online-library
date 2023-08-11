@@ -1,5 +1,7 @@
+Task solved by applying the Service Repository pattern and Laravel Brezee starter kit
+
 to run app:
 
-npm run dev
+cd online-library
 
-users for testing:
+npm run dev
