@@ -29,7 +29,7 @@ class BookPolicy
      */
     public function create(User $user): bool
     {
-        //
+        
     }
 
     /**
@@ -37,7 +37,7 @@ class BookPolicy
      */
     public function update(User $user, Book $book): bool
     {
-        //
+        return $user->id === (int) $book->who_created_it || $user->user_type === 'librarian';
     }
 
     /**
@@ -45,7 +45,7 @@ class BookPolicy
      */
     public function delete(User $user, Book $book): bool
     {
-        //
+        return $user->id === (int) $book->who_created_it || $user->user_type === 'librarian';
     }
 
     /**

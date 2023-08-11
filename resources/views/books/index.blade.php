@@ -10,9 +10,12 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     
-                    <x-nav-link :href="route('book.create')">
-                        {{ __('Add new Book') }}
-                    </x-nav-link>
+                    @if(auth()->user()->user_type->value == 'librarian')
+                        <x-nav-link :href="route('book.create')">
+                            {{ __('Add new Book') }}
+                        </x-nav-link>
+                    @endif
+                    
                     <hr><br>
                     
                     <x-books-table :books="$books" />

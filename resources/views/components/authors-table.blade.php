@@ -21,17 +21,19 @@
                     <td class="px-6 py-3">{{ $author->surname }}</td>
                     <td class="px-6 py-3">{{ $author->surname }}</td>
                     <td class="px-6 py-3">
-
-                        <x-nav-link :href="route('author.edit', $author->id)">
-                            {{ __('click') }}
-                        </x-nav-link>
-                    
+                        
+                        @can('delete', $author)
+                            <x-nav-link :href="route('author.edit', $author->id)">
+                                {{ __('click') }}
+                            </x-nav-link>
+                        @endcan
                     </td>
                     <td class="px-6 py-3">
-
-                        <x-nav-link :href="route('author.destroy', $author->id)">
-                            {{ __('click') }}
-                        </x-nav-link>
+                        @can('delete', $author)
+                            <x-nav-link :href="route('author.destroy', $author->id)">
+                                {{ __('click') }}
+                            </x-nav-link>
+                        @endcan
 
                     </td>
                 </tr>
