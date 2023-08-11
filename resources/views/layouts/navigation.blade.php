@@ -13,18 +13,21 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     
-                    <x-nav-link :href="route('authors')" :active="request()->routeIs('authors')">
-                        {{ __('Authors') }}
-                    </x-nav-link>
+                    @if(auth()->user()->user_type->value == 'librarian');
+                        <x-nav-link :href="route('authors')" :active="request()->routeIs('authors')">
+                            {{ __('Authors') }}
+                        </x-nav-link>
+                    @endif
                     
                     <x-nav-link :href="route('books')" :active="request()->routeIs('books')">
                         {{ __('Books') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('users')" :active="request()->routeIs('users')">
-                        {{ __('Users') }}
-                    </x-nav-link>
-
+                    @if(auth()->user()->user_type->value == 'librarian');
+                        <x-nav-link :href="route('users')" :active="request()->routeIs('users')">
+                            {{ __('Users') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 
