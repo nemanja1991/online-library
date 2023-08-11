@@ -22,19 +22,18 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/',                     [BookController::class,     'index']);
-    Route::get('/books',                [BookController::class,     'index'])->name('books');
-    Route::get('/book/create',          [BookController::class,     'create'])->name('book.create');
-    Route::get('/book/destroy/{$book}',     [BookController::class,     'destroy'])->name('book.destroy');
-    Route::get('/book/edit/{$book}',        [BookController::class,     'edit'])->name('book.edit');
+    Route::get('/',                         [BookController::class,     'index']);
+    Route::get('/books',                    [BookController::class,     'index'])->name('books');
+    Route::get('/book/create',              [BookController::class,     'create'])->name('book.create');
+    Route::get('/book/destroy/{book}',     [BookController::class,     'destroy'])->name('book.destroy');
+    Route::get('/book/edit/{book}',        [BookController::class,     'edit'])->name('book.edit');
     Route::post('/book/store',              [BookController::class,     'store'])->name('book.store');
 
-    Route::get('/users',        [RegisteredUserController::class, 'create'])->name('users');
+    Route::get('/users',        [RegisteredUserController::class, 'index'])->name('users');
     Route::get('create_user',   [RegisteredUserController::class, 'create'])->name('create_user');
     Route::post('create_user',  [RegisteredUserController::class, 'store']);
 
     Route::get('/authors',                [AuthorsController::class,     'index'])->name('authors');
-
 });
 
 

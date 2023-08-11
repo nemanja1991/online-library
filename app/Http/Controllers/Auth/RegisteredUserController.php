@@ -57,6 +57,8 @@ class RegisteredUserController extends Controller
 
     public function index()
     {
-        return view('auth.index');
+        return view('auth.index',
+            ['users' => User::all()]
+        );
     }
 }

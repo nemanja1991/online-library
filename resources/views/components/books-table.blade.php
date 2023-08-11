@@ -1,6 +1,9 @@
 @props(['books' => $books])
 
 <div class="relative overflow-x-auto">
+
+    @if(!empty($books))
+
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
@@ -20,9 +23,11 @@
                     <td class="px-6 py-3">{{ $book->book_number }}</td>
                     <td class="px-6 py-3">{{ $book->author->name }}</td>
                     <td class="px-6 py-3">
+
                         <x-nav-link :href="route('book.edit', $book->id)">
                             {{ __('click') }}
                         </x-nav-link>
+                    
                     </td>
                     <td class="px-6 py-3">
 
@@ -35,6 +40,9 @@
             @endforeach
         </tbody>
     </table>
+    @else
+        <p>{{ __('There is no added books in our library.') }}</p>
+    @endif
 </div>
 
     

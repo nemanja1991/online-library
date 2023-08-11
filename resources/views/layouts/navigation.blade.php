@@ -22,7 +22,7 @@
                     </x-nav-link>
 
                     <x-nav-link :href="route('users')" :active="request()->routeIs('users')">
-                        {{ __('Users') }}
+                        {{ __('User') }}
                     </x-nav-link>
 
                 </div>
