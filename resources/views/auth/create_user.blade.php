@@ -62,7 +62,7 @@
                             $user_type = \App\Enums\UserTypeEnum::cases();   
                         @endphp
                         
-                        <x-text-select id="user_type" class="block mt-1 w-full" name="user_type" required autocomplete="user_type"    :values="$user_type" /> 
+                        <x-text-select id="user_type" class="block mt-1 w-full" name="user_type" required autocomplete="user_type" :values="$user_type" :selected="null"/> 
             
                         <x-input-error :messages="$errors->get('user_type')" class="mt-2" />
                     </div>

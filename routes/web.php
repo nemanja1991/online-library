@@ -27,8 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/book/create',              [BookController::class,     'create']   )->name('book.create');
     Route::get('/book/destroy/{book}',      [BookController::class,     'destroy']  )->name('book.destroy');
     Route::get('/book/edit/{book}',         [BookController::class,     'edit']     )->name('book.edit');
-    
-    Route::post('/book/update',      [BookController::class,     'update']   )->name('book.update');
+    Route::post('/book/update',             [BookController::class,     'update']   )->name('book.update');
     Route::post('/book/store',              [BookController::class,     'store']    )->name('book.store');
 
     Route::get('/users',                    [RegisteredUserController::class, 'index']      )->name('users');
@@ -36,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::post('create_user',              [RegisteredUserController::class, 'store']      );
     Route::get('/user/destroy/{user}',      [RegisteredUserController::class, 'destroy']    )->name('user.destroy');
     Route::get('/user/edit/{user}',         [RegisteredUserController::class, 'edit']       )->name('user.edit');
+    Route::post('/user/update',             [RegisteredUserController::class, 'update']     )->name('user.update');
 
     Route::get('/authors',                  [AuthorsController::class, 'index']    )->name('authors');
     Route::get('/author/create',            [AuthorsController::class, 'create']   )->name('author.create');

@@ -11,9 +11,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Validation\Rules\Enum;
 use Illuminate\Auth\Events\Registered;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Validation\Rules\Enum;
 
 class RegisteredUserController extends Controller
 {
@@ -60,5 +60,44 @@ class RegisteredUserController extends Controller
         return view('auth.index',
             ['users' => User::all()]
         );
+    }
+
+    public function destroy($id)
+    {
+        User::find($id)->delete();
+
+        return view('auth.index',
+            ['users' => User::all()]
+        );
+    }
+
+    public function edit($id)
+    {
+        return view('auth.edit',
+            ['user' => User::find($id)]
+        );
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'name'      => ['required', 'string', 'max:255'],
+            'surname'   => ['required', 'string', 'max:255'],
+            'email'     => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'user_type' => ['required', new Enum(UserTypeEnum::class)],
+        ]);
+        
+        $id         = $request->id;
+
+        User::where('id', $id)->update(
+            [
+                'name'      => $request->name,
+                'surname'   => $request->surname,
+                'email'     => $request->email,
+                'user_type' => $request->user_type
+            ]
+        );
+        
+        return view('auth.index', ['users' => User::all()]);
     }
 }
