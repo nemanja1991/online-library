@@ -31,7 +31,7 @@ class AuthorsController extends Controller
      */
     public function create()
     {
-        //
+        return view('authors.create');
     }
 
     /**
@@ -39,7 +39,11 @@ class AuthorsController extends Controller
      */
     public function store(StoreAuthorsRequest $request)
     {
-        //
+        $validated = $request->validated();
+       
+        $this->authorService->store($validated);
+
+        return redirect('/books');
     }
 
     /**

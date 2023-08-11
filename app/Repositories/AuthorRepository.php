@@ -9,7 +9,7 @@ class AuthorRepository implements AuthorInterface
 {
     public function all()
     {
-        return Author::latest()->paginate(10);
+        return Author::whereNull('deleted_at')->paginate(10);
     }
 
     public function store($data)
