@@ -35,17 +35,17 @@ class BookPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Book $book): bool
+    public function update_book(User $user, Book $book): bool
     {
-        return $user->id === (int) $book->who_created_it || $user->user_type === 'librarian';
+        return $user->id === (int) $book->who_created_it && $user->user_type->value === 'librarian';
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Book $book): bool
+    public function delete_book(User $user, Book $book): bool
     {
-        return $user->id === (int) $book->who_created_it || $user->user_type === 'librarian';
+        return $user->id === (int) $book->who_created_it && $user->user_type->value === 'librarian';
     }
 
     /**

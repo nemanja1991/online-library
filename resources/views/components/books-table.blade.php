@@ -23,7 +23,7 @@
                     <td class="px-6 py-3">{{ $book->book_number }}</td>
                     <td class="px-6 py-3">{{ $book->author->getFullNameAttribute() }}</td>
                     <td class="px-6 py-3">
-                        @can('update', $book)
+                        @can('update_book', $book)
                             <x-nav-link :href="route('book.edit', $book->id)">
                                 {{ __('click') }}
                             </x-nav-link>
@@ -31,7 +31,7 @@
                     
                     </td>
                     <td class="px-6 py-3">
-                        @can('delete', $book)
+                        @can('delete_book', $book)
                             <x-nav-link :href="route('book.destroy', $book->id)">
                                 {{ __('click') }}
                             </x-nav-link>

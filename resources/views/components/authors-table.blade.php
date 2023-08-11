@@ -22,14 +22,14 @@
                     <td class="px-6 py-3">{{ $author->surname }}</td>
                     <td class="px-6 py-3">
                         
-                        @can('delete', $author)
+                        @can('update_author', $author)
                             <x-nav-link :href="route('author.edit', $author->id)">
                                 {{ __('click') }}
                             </x-nav-link>
                         @endcan
                     </td>
                     <td class="px-6 py-3">
-                        @can('delete', $author)
+                        @can('delete_author', $author)
                             <x-nav-link :href="route('author.destroy', $author->id)">
                                 {{ __('click') }}
                             </x-nav-link>
