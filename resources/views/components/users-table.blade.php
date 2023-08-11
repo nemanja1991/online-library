@@ -24,16 +24,16 @@
                     <td class="px-6 py-3">{{ $user->user_type }}</td>
                     <td class="px-6 py-3">
 
-                        {{-- <x-nav-link :href="route('book.edit', $book->id)">
+                        <x-nav-link :href="route('user.edit', $user->id)">
                             {{ __('click') }}
-                        </x-nav-link> --}}
+                        </x-nav-link>
                     
                     </td>
                     <td class="px-6 py-3">
 
-                        {{-- <x-nav-link :href="route('book.destroy', $book->id)">
+                        <x-nav-link :href="route('user.destroy', $user->id)">
                             {{ __('click') }}
-                        </x-nav-link> --}}
+                        </x-nav-link>
 
                     </td>
                 </tr>

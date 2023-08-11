@@ -19,18 +19,19 @@
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <td class="px-6 py-3">{{ $author->name }}</td>
                     <td class="px-6 py-3">{{ $author->surname }}</td>
+                    <td class="px-6 py-3">{{ $author->surname }}</td>
                     <td class="px-6 py-3">
 
-                        {{-- <x-nav-link :href="route('book.edit', $book->id)">
+                        <x-nav-link :href="route('book.edit', $author->id)">
                             {{ __('click') }}
-                        </x-nav-link> --}}
+                        </x-nav-link>
                     
                     </td>
                     <td class="px-6 py-3">
 
-                        {{-- <x-nav-link :href="route('book.destroy', $book->id)">
+                        <x-nav-link :href="route('book.destroy', $author->id)">
                             {{ __('click') }}
-                        </x-nav-link> --}}
+                        </x-nav-link>
 
                     </td>
                 </tr>
