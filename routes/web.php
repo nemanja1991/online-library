@@ -41,8 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/author/create',            [AuthorsController::class,  'create']   )->name('author.create');
     Route::get('/author/destroy/{author}',  [AuthorsController::class,  'destroy']  )->name('author.destroy');
     Route::get('/author/edit/{author}',     [AuthorsController::class,  'edit']     )->name('author.edit');
-    Route::post('/book/update',             [AuthorsController::class,  'update']   )->name('author.update');
-    Route::post('/book/store',              [AuthorsController::class,  'store']    )->name('author.store');
+    Route::post('/author/update',             [AuthorsController::class,  'update']   )->name('author.update');
+    Route::post('/author/store',              [AuthorsController::class,  'store']    )->name('author.store');
 });
 
 require __DIR__.'/auth.php';

@@ -17,6 +17,7 @@ class Author extends Model
         'name',
         'surname',
         'image',
+        'who_created_it'
     ];
 
     public function book()

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Authors;
+use App\Models\Author;
 use App\Services\AuthorService;
 use App\Http\Requests\StoreAuthorsRequest;
 use App\Http\Requests\UpdateAuthorsRequest;
@@ -43,7 +43,7 @@ class AuthorsController extends Controller
        
         $this->authorService->store($validated);
 
-        return redirect('/books');
+        return redirect('authors');
     }
 
     /**
@@ -73,8 +73,10 @@ class AuthorsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Authors $authors)
+    public function destroy(Author $author)
     {
-        //
+        $this->authorService->destroy($author->id);
+        
+        return redirect('authors');
     }
 }

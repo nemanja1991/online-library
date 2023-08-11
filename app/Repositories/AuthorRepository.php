@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\Book;
 use App\Models\Author;
 use App\Repositories\Interfaces\AuthorInterface;
 
@@ -14,7 +15,14 @@ class AuthorRepository implements AuthorInterface
 
     public function store($data)
     {
-        return Author::create($data);
+
+        return Author::create(
+            [
+                'name'              => $data['name'],
+                'surname'           => $data['surname'],
+                'who_created_it'    => auth()->user()->id
+            ]
+        );
     }
 
     public function find($id)
@@ -29,6 +37,8 @@ class AuthorRepository implements AuthorInterface
 
     public function destroy($id)
     {
-        $data = Author::find($id)->delete();
+        Book::where('author_id', $id)->delete();
+        
+        return $data = Author::find($id)->delete(); 
     }
 }
