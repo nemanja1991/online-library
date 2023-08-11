@@ -42,7 +42,7 @@
         </tbody>
     </table>
     @else
-        <p>{{ __('There is no added books in our library.') }}</p>
+        <p>{{ __('No data yet.') }}</p>
     @endif
 </div>
 

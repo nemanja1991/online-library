@@ -37,4 +37,9 @@ class BookService
     {
         return $this->bookRepository->update($data, $id);
     }
+
+    public function search($pattern)
+    {
+        return $this->bookRepository->search($pattern);
+    }
 }

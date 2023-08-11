@@ -29,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/book/edit/{book}',         [BookController::class,     'edit']     )->name('book.edit');
     Route::post('/book/update',             [BookController::class,     'update']   )->name('book.update');
     Route::post('/book/store',              [BookController::class,     'store']    )->name('book.store');
+    Route::post('/book/search',             [BookController::class,     'search']   )->name('book.search');
 
     Route::get('/users',                    [RegisteredUserController::class, 'index']      )->name('users');
     Route::get('create_user',               [RegisteredUserController::class, 'create']     )->name('create_user');

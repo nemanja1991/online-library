@@ -9,4 +9,5 @@ interface BookInterface
     public function find($id);
     public function update($data, $id); 
     public function destroy($id);
+    public function search($pattern);
 }

@@ -39,4 +39,17 @@ class BookRepository implements BookInterface
     {
         return $data = Book::find($id)->delete();
     }
+
+    public function search($pattern)
+    {
+        return $data = Book::whereHas('author', function ($query) use ($pattern) {
+                        $query->where(function ($q) use ($pattern) {
+                            $q->where('surname', 'LIKE', '%'.$pattern.'%')
+                                ->orWhere('name', 'LIKE', '%'.$pattern.'%');
+                        });
+                    })
+                    ->orWhere('title', 'LIKE', '%'.$pattern.'%')
+                    ->orWhere('book_number', 'LIKE', '%'.$pattern.'%')
+                    ->get();
+    }
 }

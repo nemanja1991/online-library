@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use App\Models\Author;
+use Illuminate\Http\Request;
 use App\Services\BookService;
 use App\Services\AuthorService;
 use Illuminate\Http\RedirectResponse;
@@ -91,5 +92,11 @@ class BookController extends Controller
         return redirect('/')->with('success', __('Author successuly removed.'));;
     }
 
+    public function search(Request $request)
+    {
+        $books = $this->bookService->search($request->search);
+
+        return view('books.index', compact('books'));
+    }
     
 }
