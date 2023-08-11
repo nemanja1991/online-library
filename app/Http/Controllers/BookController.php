@@ -81,9 +81,7 @@ class BookController extends Controller
     {
         $validated = $request->validated();
 
-        dd($validated);
-
-        $this->bookService->update($validated, $book);
+        $this->bookService->update($validated, $request->id);
 
         return redirect('/books');
     }
